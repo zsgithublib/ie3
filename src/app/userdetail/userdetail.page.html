@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>userdetail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="height: 50%; width: 100%" #mapCanvas id="map_canvas"></div>
+  <!-- <img width="100%" src="https://via.placeholder.com/500/09f/fff.png"> -->
+
+  {{userInfo.name.title}}. {{userInfo.name.first}} {{userInfo.name.last}}
+
+  {{userInfo.email}}
+
+  {{userInfo.timezone}}
+
+  Age: {{userInfo.age}}
+
+  <h5>Contact Info</h5>
+
+  <ion-icon name="call"></ion-icon> {{userInfo.phone}}
+  <ion-icon name="phone-portrait"></ion-icon> {{userInfo.cell}}
+  <ion-icon name="mail"></ion-icon> {{userInfo.email}}
+
+
+  {{userInfo.picture.large}}
+
+  {{userInfo.gender}}
+
+
+  <ion-button float-right (click)="bookMarkEm(userInfo)">
+    <ion-icon slot="icon-only" name="bookmark" float-right color="danger"></ion-icon>
+  </ion-button>
+
+
+</ion-content>

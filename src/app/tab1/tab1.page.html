@@ -15,7 +15,7 @@
       <ion-card-subtitle>Get Started</ion-card-subtitle>
       <ion-card-title>Welcome to Ionic</ion-card-title>
     </ion-card-header> -->
-    <ion-card-content>
+    <ion-card-content (click)="getDetail(u)">
       <ion-avatar slot="start">
         <ion-img src="{{u.picture.large}}"></ion-img>
         <!-- <ion-label>Item Avatar</ion-label> -->
