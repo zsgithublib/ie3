@@ -1,36 +1,90 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>userdetail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>User Detail</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="searchView()">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button (click)="shareInfo()">
+        <ion-icon slot="icon-only" name="share-alt"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
-  <div style="height: 50%; width: 100%" #mapCanvas id="map_canvas"></div>
-  <!-- <img width="100%" src="https://via.placeholder.com/500/09f/fff.png"> -->
 
-  {{userInfo.name.title}}. {{userInfo.name.first}} {{userInfo.name.last}}
-
-  {{userInfo.email}}
-
-  {{userInfo.timezone}}
-
-  Age: {{userInfo.age}}
-
-  <h5>Contact Info</h5>
-
-  <ion-icon name="call"></ion-icon> {{userInfo.phone}}
-  <ion-icon name="phone-portrait"></ion-icon> {{userInfo.cell}}
-  <ion-icon name="mail"></ion-icon> {{userInfo.email}}
+  <ion-grid>
+  <ion-row>
+    <ion-col>
+      <img src="{{userInfo.picture.large}}">
+    </ion-col>
+    <ion-col>
+      <p>{{userInfo.name.title}}. {{userInfo.name.first}} {{userInfo.name.last}}</p>
+    </ion-col>
+  </ion-row>
+  </ion-grid>
 
 
-  {{userInfo.picture.large}}
-
-  {{userInfo.gender}}
 
 
-  <ion-button float-right (click)="bookMarkEm(userInfo)">
-    <ion-icon slot="icon-only" name="bookmark" float-right color="danger"></ion-icon>
-  </ion-button>
+<ion-segment [(ngModel)]="section" style="height:40px;">
+  <ion-segment-button value="info">
+    <ion-label>Info</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="directions">
+    <ion-label>Directions</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+  <ion-item no-padding>
+    <ion-label text-center>
+      Bookmark User
+      <ion-icon name="bookmark" slot="end" (click)="bookMarkEm(userInfo)"></ion-icon>
+    </ion-label>
+  </ion-item>
+  <!-- <h5>Contact Info</h5> -->
+  <div [ngSwitch]="section">
+  <div *ngSwitchCase="'info'">
+  <ion-item lines="none">
+    <ion-label>
+      <ion-icon name="call"></ion-icon> {{userInfo.phone}}
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>
+      <ion-icon name="phone-portrait"></ion-icon> {{userInfo.cell}}
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>
+      <ion-icon name="mail"></ion-icon> {{userInfo.email}}
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>
+      {{userInfo.gender}}
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>
+      Age: {{userInfo.dob.age}}
+    </ion-label>
+  </ion-item>
+  </div>
+
+  <div *ngSwitchCase="'directions'">
+    <div style="height: 50%; width: 100%" #mapCanvas id="map_canvas"></div>
+    <img width="100%" src="https://via.placeholder.com/500/09f/fff.png">
+  </div>
+  </div>
+
+
+
 
 
 </ion-content>

@@ -35,6 +35,7 @@ export class Tab1Page implements OnInit {
   getDetail(u){
     console.log('get detail', u);
     // let stuff = JSON.stringify(u);
+    // this.data.getData(u);
     this.data.setData(u);
     this.router.navigateByUrl(`/userdetail/${u.name}`);
     // this.router.navigateByUrl(`/userdetail/${u.name.first}`, {user: `${u}`});
