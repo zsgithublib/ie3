@@ -18,6 +18,7 @@
 
 <ion-content>
 
+
   <ion-grid>
   <ion-row>
     <ion-col>
@@ -30,9 +31,9 @@
   </ion-grid>
 
 
+<!-- <div style="height: 50%; width: 100%" #mapCanvas id="map_canvas"></div> -->
 
-
-<ion-segment [(ngModel)]="section" style="height:40px;">
+<ion-segment [(ngModel)]="section" style="height:40px;" (ionChange)="segmentChanged($event)">
   <ion-segment-button value="info">
     <ion-label>Info</ion-label>
   </ion-segment-button>
@@ -47,7 +48,7 @@
       <ion-icon name="bookmark" slot="end" (click)="bookMarkEm(userInfo)"></ion-icon>
     </ion-label>
   </ion-item>
-  <!-- <h5>Contact Info</h5> -->
+  <h5>Contact Info</h5>
   <div [ngSwitch]="section">
   <div *ngSwitchCase="'info'">
   <ion-item lines="none">
@@ -78,9 +79,14 @@
   </div>
 
   <div *ngSwitchCase="'directions'">
-    <div style="height: 50%; width: 100%" #mapCanvas id="map_canvas"></div>
-    <img width="100%" src="https://via.placeholder.com/500/09f/fff.png">
+    <div padding>
+        <p>{{userInfo.location.street}}</p>
+        <p>{{userInfo.location.city}}, {{userInfo.location.state}}, {{userInfo.location.postcode}}</p>
+    </div>
+    <!-- <div style="height: 50%; width: 100%" #mapCanvas id="map_canvas">p</div> -->
+    <!-- <img width="100%" src="https://via.placeholder.com/500/09f/fff.png"> -->
   </div>
+
   </div>
 
 

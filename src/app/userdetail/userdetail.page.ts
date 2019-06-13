@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { ToastController, ModalController, AlertController } from '@ionic/angular';
@@ -12,7 +12,7 @@ declare var google: any;
   templateUrl: './userdetail.page.html',
   styleUrls: ['./userdetail.page.scss'],
 })
-export class UserdetailPage implements OnInit {
+export class UserdetailPage implements OnInit, AfterViewInit{
   // @ViewChild('map') mapElement: ElementRef;
   @ViewChild('mapCanvas') mapElement: ElementRef;
 
@@ -47,7 +47,25 @@ export class UserdetailPage implements OnInit {
 
     this.userInfo = this.data.getData();
     console.log(this.userInfo);
+    // this.mapElement.nativeElement = 'll';
     // this.configureMap();
+  }
+
+  ngAfterViewInit(){
+    // console.log('here is the', this.mapElement);
+    // console.log(this.mapElement);
+    // this.mapElement.nativeElement;
+    // console.log(this.mapElement);
+    // // setTimeout(()=> { this.configureMap(); }, 3000);
+    // this.configureMap();
+  }
+
+  segmentChanged(e){
+    console.log(e);
+    if(e.detail.value == 'directions'){
+      console.log('show map');
+      // this.configureMap();
+    }
   }
 
   async shareInfo(u) {
