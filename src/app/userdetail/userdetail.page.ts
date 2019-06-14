@@ -52,7 +52,7 @@ export class UserdetailPage implements OnInit, AfterViewInit{
   }
 
   ngAfterViewInit(){
-    // console.log('here is the', this.mapElement);
+    // console.log('xhere is the', this.mapElement);
     // console.log(this.mapElement);
     // this.mapElement.nativeElement;
     // console.log(this.mapElement);

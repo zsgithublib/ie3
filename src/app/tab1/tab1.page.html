@@ -3,10 +3,24 @@
     <ion-title>
       Members
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="searchView()">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button (click)="filterList()">
+        <ion-icon name="list"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content>
+
+  <ion-toolbar *ngIf="searchThis == true">
+    <ion-searchbar placeholder="Search Users"></ion-searchbar>
+  </ion-toolbar>
 
   <!-- <ion-item (click)="testClick()">
     <ion-thumbnail slot="start">

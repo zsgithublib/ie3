@@ -6,9 +6,11 @@
 
 <ion-content>
 
-  <ion-button float-right (click)="dismiss()">
-    <ion-icon slot="icon-only" name="more" name="close" float-right color="danger"></ion-icon>
-  </ion-button>
+  <!-- <ion-button float-right > -->
+  <ion-row>
+    <ion-icon name="more" name="close" float-right color="danger" (click)="dismiss()"></ion-icon>
+  <!-- </ion-button> --><br/><br/>
+  </ion-row>
 
 <ion-toolbar>
   <ion-searchbar placeholder="Search Users"></ion-searchbar>
